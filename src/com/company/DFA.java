@@ -140,6 +140,7 @@ public class DFA {
                     }
                 }
                 if (isFinal1 || isFinal2) {
+                    System.out.println("New Final State: \n ");
                     fs3[k++] = newState;
                 }
             }

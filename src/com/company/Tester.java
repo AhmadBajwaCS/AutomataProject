@@ -52,7 +52,7 @@ public class Tester {
         DFA one = new DFA(tOne, fOne);
         DFA two = new DFA(tTwo, fTwo);
         DFA three = new DFA(tThree, fThree);
-        
+
         // Test each
         score += test(one, testStrings, new boolean[] { true, false, true, false });
         score += test(two, testStrings, new boolean[] { false, false, false, true });
@@ -64,7 +64,7 @@ public class Tester {
         //Testing Unions:
         System.out.println("------ TEST Union ---------");
 
-        int[][] tm1 = new int[4][2];
+        /*int[][] tm1 = new int[4][2];
         tm1[0][0] = 1;
         tm1[0][1] = 3;
         tm1[1][0] = 1;
@@ -86,6 +86,25 @@ public class Tester {
         tm2[3][0] = 3;
         tm2[3][1] = 3;
         int[] fm2 = { 3 };
+
+        DFA m2 = new DFA(tm2, fm2); */
+
+        int[][] tm1 = new int[2][2];
+        tm1[0][0] = 0;
+        tm1[0][1] = 1;
+        tm1[1][0] = 1;
+        tm1[1][1] = 1;
+        int[] fm1 = { 1 };
+        DFA m1 = new DFA(tm1, fm1);
+
+        int[][] tm2 = new int[3][2];
+        tm2[0][0] = 1;
+        tm2[0][1] = 2;
+        tm2[1][0] = 1;
+        tm2[1][1] = 1;
+        tm2[2][0] = 2;
+        tm2[2][1] = 2;
+        int[] fm2 = { 1 };
 
         DFA m2 = new DFA(tm2, fm2);
 
