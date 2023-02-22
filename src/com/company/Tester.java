@@ -60,6 +60,37 @@ public class Tester {
 
         questions += testStrings.length * (testNumber-1);
         System.out.print("\n\nYou got " + score + "/" + questions + " correct.\n\n");
+
+        //Testing Unions:
+        System.out.println("------ TEST Union ---------");
+
+        int[][] tm1 = new int[4][2];
+        tm1[0][0] = 1;
+        tm1[0][1] = 3;
+        tm1[1][0] = 1;
+        tm1[1][1] = 2;
+        tm1[2][0] = 1;
+        tm1[2][1] = 2;
+        tm1[3][0] = 3;
+        tm1[3][1] = 3;
+        int[] fm1 = { 3 };
+        DFA m1 = new DFA(tm1, fm1);
+
+        int[][] tm2 = new int[4][2];
+        tm2[0][0] = 3;
+        tm2[0][1] = 1;
+        tm2[1][0] = 2;
+        tm2[1][1] = 1;
+        tm2[2][0] = 2;
+        tm2[2][1] = 1;
+        tm2[3][0] = 3;
+        tm2[3][1] = 3;
+        int[] fm2 = { 3 };
+
+        DFA m2 = new DFA(tm2, fm2);
+
+        DFA m3 = DFA.union(m1, m2);
+        m3.printDFA();
     }
 
     public static int test(DFA dfa, String[] test, boolean[] answers) {
@@ -79,4 +110,7 @@ public class Tester {
         testNumber++;
         return score;
     }
+
+
+
 }
