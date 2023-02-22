@@ -1,4 +1,6 @@
-package com.company;/* Project #1 - Automata Theory
+package com.company;
+
+/* Project #1 - Automata Theory
  *
  * Group: 
  * Keshav Raghavan (KAR190002)
@@ -8,6 +10,7 @@ package com.company;/* Project #1 - Automata Theory
  * 
  */
 
+import java.util.*;
 
 public class DFA {
 
@@ -25,6 +28,25 @@ public class DFA {
         this.finalStates = finalStates;
     }
 
+    public static DFA intersection (DFA m1, DFA m2) {
+        int[][] intersectionTable = new int[m1.transitionTable.length][2];
+        int[] newFinalStates = new int[0];
+
+        for (int i = 0; i < intersectionTable.length; i++) {
+            for (int j = 0; j < 2; j++) {
+                int newState1 = m1.transitionTable[i][j];
+                int newState2 = m2.transitionTable[i][j];
+                intersectionTable[i][j] = newState1 == newState2 ? newState1 : -1;
+            }
+            if (Arrays.binarySearch(m1.finalStates, i) >= 0 && Arrays.binarySearch(m2.finalStates, i) >= 0) {
+                newFinalStates = Arrays.copyOf(newFinalStates, newFinalStates.length + 1);
+                newFinalStates[newFinalStates.length - 1] = i;
+            }
+        }
+
+        return new DFA(intersectionTable, newFinalStates);
+    }
+
     public boolean run (String input) {
         char[] inputCharArray = input.toCharArray();
         state = 0;
@@ -35,38 +57,14 @@ public class DFA {
          * format state = transitionTable[currentState][char]
          */
         for (char c : inputCharArray) {
-            if (state == 0) {
-                if (c == '0') {
-                    state = transitionTable[0][0];
-                } 
-                else if (c == '1') {
-                    state = transitionTable[0][1];
-                }
+            if (c == '0') {
+                state = transitionTable[state][0];
             } 
-            else if (state == 1) {
-                if (c == '0') {
-                    state = transitionTable[1][0];
-                } 
-                else if (c == '1') {
-                    state = transitionTable[1][1];
-                }
-            } 
-            else if (state == 2) {
-                if (c == '0') {
-                    state = transitionTable[2][0];
-                }
-                else if (c == '1') {
-                    state = transitionTable[2][1];
-                }
+            else if (c == '1') {
+                state = transitionTable[state][1];
             }
-            else if (state == 3) {
-                if (c == '0') {
-                    state = transitionTable[3][0];
-                }
-                else if (c == '1') {
-                    state = transitionTable[3][1];
-                }
-            }
+
+            state++;
         }
 
         //if the state we have reached is equal to the final state of the DFA, return true
