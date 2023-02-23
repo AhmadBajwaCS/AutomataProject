@@ -81,21 +81,21 @@ public class DFA {
 
     public static DFA union(DFA m1, DFA m2) {
         // Get the transition tables and final states of the two DFAs
-        int[][] tt1 = m1.getTransitionTable();
-        int[] fs1 = m1.getFinalStates();
-        int[][] tt2 = m2.getTransitionTable();
-        int[] fs2 = m2.getFinalStates();
+        int[][] transitionTableM1 = m1.getTransitionTable();
+        int[] finalStatesM1 = m1.getFinalStates();
+        int[][] transitionTableM2 = m2.getTransitionTable();
+        int[] finalStatesM2 = m2.getFinalStates();
 
         // Calculate the number of states in the new DFA
-        int numStates = tt1.length * tt2.length;
+        int numStates = transitionTableM1.length * transitionTableM2.length;
 
         // Create a new transition table and final states array for the new DFA
         int[][] tt3 = new int[numStates][2];
 
         int numFinalStates = 10;
-        /*for (int f : fs1) {
-            for (int g : fs2) {
-                if (f * tt2.length + g < numStates) {
+        /*for (int f : finalStatesM1) {
+            for (int g : finalStatesM2) {
+                if (f * transitionTableM2.length + g < numStates) {
                     numFinalStates++;
                 }
             }
@@ -105,35 +105,35 @@ public class DFA {
 
         // Calculate the transition table and final states of the new DFA
         int k = 0;
-        for (int i = 0; i < tt1.length; i++) {
-            for (int j = 0; j < tt2.length; j++) {
+        for (int i = 0; i < transitionTableM1.length; i++) {
+            for (int j = 0; j < transitionTableM2.length; j++) {
                 // Calculate the new state based on the combination of the two states
                 System.out.println("Testing i: " + i + " and j: " + j);
 
-                int newState = i * tt2.length + j;
+                int newState = i * transitionTableM2.length + j;
 
                 // Calculate the transition for input 0
-                int t1 = tt1[i][0];
-                int t2 = tt2[j][0];
-                int newT = t1 * tt2.length + t2;
+                int t1 = transitionTableM1[i][0];
+                int t2 = transitionTableM2[j][0];
+                int newT = t1 * transitionTableM2.length + t2;
                 tt3[newState][0] = newT;
 
                 // Calculate the transition for input 1
-                t1 = tt1[i][1];
-                t2 = tt2[j][1];
-                newT = t1 * tt2.length + t2;
+                t1 = transitionTableM1[i][1];
+                t2 = transitionTableM2[j][1];
+                newT = t1 * transitionTableM2.length + t2;
                 tt3[newState][1] = newT;
 
                 // Check if the new state is an accepting state
                 boolean isFinal1 = false;
                 boolean isFinal2 = false;
-                for (int f : fs1) {
+                for (int f : finalStatesM1) {
                     if (i == f) {
                         isFinal1 = true;
                         break;
                     }
                 }
-                for (int f : fs2) {
+                for (int f : finalStatesM2) {
                     if (j == f) {
                         isFinal2 = true;
                         break;
