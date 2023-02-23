@@ -46,10 +46,11 @@ public class DFA {
         }
 
         //if the state we have reached is equal to the final state of the DFA, return true
-        if (finalStates[0] == state) {
-            return true;
+        for (int finalState : finalStates) {
+            if (finalState == state) {
+                return true;
+            }
         }
-
         return false;
     }
 
@@ -123,6 +124,31 @@ public class DFA {
         // Create the new DFA and return it
         DFA m3 = new DFA(tt3, Arrays.copyOf(fs3, k));
         return m3;
+    }
+    
+    public static DFA complement(DFA m1){
+        ArrayList<Integer> tempList = new ArrayList<>();
+        int numStates = m1.transitionTable.length;
+
+        //Creating arraylist of all states
+        for(int i = 0; i < numStates; ++i)
+            tempList.add(i);
+
+        //Removing non-final states from complement DFA
+        for(int i = 0; i < tempList.size(); ++i){
+            for(int j = 0; j < m1.finalStates.length; ++j){
+                if(m1.finalStates[j] == tempList.get(i))
+                    tempList.remove(i);
+            }
+        }
+
+        int[] newFinalStates = new int[tempList.size()];
+
+        for(int i = 0; i < newFinalStates.length; ++i){
+            newFinalStates[i] = tempList.get(i);
+        }
+
+        return new DFA(m1.transitionTable, newFinalStates); //New DFA
     }
 
     private int[] getFinalStates() {
