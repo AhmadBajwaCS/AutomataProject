@@ -126,7 +126,7 @@ public class Tester {
         testsPassed += test(DFA.union(five, six), "five OR six", testStrings, new boolean[]{false, true, false, false, true, true});
         testsRan += testStrings.length;
         
-        /*testsPassed += test(DFA.intersection(three, four), "three AND four", testStrings, new boolean[]{false, true, false, false, false, false});
+        testsPassed += test(DFA.intersection(three, four), "three AND four", testStrings, new boolean[]{false, true, false, false, false, false});
         testsRan += testStrings.length;
         
         testsPassed += test(DFA.intersection(three, six), "three AND six", testStrings, new boolean[]{false, true, false, false, false, true});
@@ -167,7 +167,7 @@ public class Tester {
         
         testsPassed += test(DFA.complement(six), "Complement of six", testStrings, new boolean[]{true, false, true, true, true, false});
         testsRan += testStrings.length;
-        */
+
 
 		System.out.println();
 		for(int i = 0; i < failed.size(); i++)
@@ -175,7 +175,7 @@ public class Tester {
 			System.out.print(failed.get(i));
 		}
         System.out.println("\nYou got " + testsPassed + "/" + testsRan + " correct.");
-		//System.out.println("Credits: " + DFA.credits());
+		System.out.println("Credits: " + DFA.credits());
     }
 
     /**

@@ -9,6 +9,7 @@ package com.company;/* Project #1 - Automata Theory
  */
 
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class DFA {
@@ -54,7 +55,9 @@ public class DFA {
         return false;
     }
 
-    public static DFA union(DFA m1, DFA m2) {
+
+    public static DFA CartesianProd(DFA m1, DFA m2, String toTest) {
+
         // Get the transition tables and final states of the two DFAs
         int[][] transitionTableM1 = m1.getTransitionTable();
         int[] finalStatesM1 = m1.getFinalStates();
@@ -67,14 +70,7 @@ public class DFA {
         // Create a new transition table and final states array for the new DFA
         int[][] tt3 = new int[numStates][2];
 
-        int numFinalStates = 10;
-        /*for (int f : finalStatesM1) {
-            for (int g : finalStatesM2) {
-                if (f * transitionTableM2.length + g < numStates) {
-                    numFinalStates++;
-                }
-            }
-        }*/
+        int numFinalStates = numStates;
         System.out.println(" Final States Count:" + numFinalStates);
         int[] fs3 = new int[numFinalStates];
 
@@ -83,7 +79,7 @@ public class DFA {
         for (int i = 0; i < transitionTableM1.length; i++) {
             for (int j = 0; j < transitionTableM2.length; j++) {
                 // Calculate the new state based on the combination of the two states
-                System.out.println("Testing i: " + i + " and j: " + j);
+                //System.out.println("Testing i: " + i + " and j: " + j);
 
                 int newState = i * transitionTableM2.length + j;
 
@@ -102,6 +98,13 @@ public class DFA {
                 // Check if the new state is an accepting state
                 boolean isFinal1 = false;
                 boolean isFinal2 = false;
+
+                /*if ( java.util.Arrays.asList(finalStatesM1).indexOf(i) != -1)
+                    isFinal1 = true;
+
+                if ( java.util.Arrays.asList(finalStatesM2).indexOf(j) != -1)
+                    isFinal2 = true; */
+
                 for (int f : finalStatesM1) {
                     if (i == f) {
                         isFinal1 = true;
@@ -114,8 +117,10 @@ public class DFA {
                         break;
                     }
                 }
-                if (isFinal1 || isFinal2) {
-                    System.out.println("New Final State: \n ");
+
+
+                if (checkFinal(toTest, isFinal1, isFinal2)) {
+                    //System.out.println("New Final State: \n ");
                     fs3[k++] = newState;
                 }
             }
@@ -124,8 +129,42 @@ public class DFA {
         // Create the new DFA and return it
         DFA m3 = new DFA(tt3, Arrays.copyOf(fs3, k));
         return m3;
+
     }
-    
+
+    public static boolean checkFinal(String toMake, boolean isFinal1, boolean isFinal2){
+        if(toMake.equals("union")){
+            return (isFinal1 || isFinal2);
+        }
+        else if (toMake.equals("intersection")){
+            return (isFinal1 && isFinal2);
+        }
+        else if (toMake.equals("difference")){
+            return (isFinal1 && !isFinal2);
+        }
+
+        return false;
+    }
+
+
+    public static DFA union(DFA m1, DFA m2) {
+
+        // Create the new DFA and return it
+        DFA m3 = CartesianProd(m1, m2, "union");
+        return m3;
+    }
+
+
+    public static DFA difference(DFA m1, DFA m2) {
+        DFA m3 = CartesianProd(m1, m2, "difference");
+        return m3;
+    }
+
+    public static DFA intersection(DFA m1, DFA m2) {
+        DFA m3 = CartesianProd(m1, m2, "intersection");
+        return m3;
+    }
+
     public static DFA complement(DFA m1){
         ArrayList<Integer> tempList = new ArrayList<>();
         int numStates = m1.transitionTable.length;
@@ -173,5 +212,10 @@ public class DFA {
         System.out.println("\nFinal States:");
         System.out.println(Arrays.toString(finalStates));
 
+    }
+
+    public static String credits() {
+        String names = "\n Keshav Raghavan \n Joseph Wright \n Akhil Kanagala \n Ahmad Bajwa";
+        return names;
     }
 }
