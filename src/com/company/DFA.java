@@ -257,6 +257,6 @@ public class DFA {
     }
 
     public static String credits() {
-        return "Keshav Raghavan, Joseph Wright, Akhil Kanagala, Ahmad Bajwa";
+        return "Akhil Kanagala, Joseph Wright, Ahmad Bajwa, Keshan Raghavan";
     }
 }
