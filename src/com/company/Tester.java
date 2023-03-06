@@ -278,15 +278,15 @@ public class Tester {
 								new boolean[]{false, false, false, false, false, false, true, false, false, false, false, false});
 		testsRan += 12;*/
 
-		testsPassed += universalChecker(new DFA[]{one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve},
+		/*testsPassed += universalChecker(new DFA[]{one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve},
 									new boolean[]{false, false, false, false, false, false, false, false, false, false, false, true});
-		testsRan += 12;
+		testsRan += 12;*/
 
-		/*testsPassed += infiniteChecker(new DFA[]{one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve},
+		testsPassed += infiniteChecker(new DFA[]{one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve},
 									new boolean[]{true, true, true, true, false, true, false, false, true, false, false, true});
 		testsRan += 12;
 
-		testsPassed += subsetChecker(new DFA[][]{{ten, eight}, {eleven, one}, {one, two}, {seven, twelve}},
+		/*testsPassed += subsetChecker(new DFA[][]{{ten, eight}, {eleven, one}, {one, two}, {seven, twelve}},
 				new boolean[]{true, true, false, true});
 		testsRan += 4;
 
@@ -344,7 +344,7 @@ public class Tester {
 				testsPassed++;
 		}
 		return testsPassed;
-	}*/
+	}
 
 	public static int universalChecker(DFA[] dfaList, boolean[] desiredTestResults) {
 		int testsPassed = 0;
@@ -360,9 +360,9 @@ public class Tester {
 				testsPassed++;
 		}
 		return testsPassed;
-	}
+	}*/
 	
-	/*public static int infiniteChecker(DFA[] dfaList, boolean[] desiredTestResults) {
+	public static int infiniteChecker(DFA[] dfaList, boolean[] desiredTestResults) {
 		int testsPassed = 0;
 
 		for(int i = 0; i < dfaList.length; i++) {
@@ -378,7 +378,7 @@ public class Tester {
 		return testsPassed;
 	}
 
-	public static int equalsChecker(DFA[][] dfaList, boolean[] desiredTestResults) {
+	/*public static int equalsChecker(DFA[][] dfaList, boolean[] desiredTestResults) {
 		int testsPassed = 0;
 
 		for(int i = 0; i < dfaList.length; i++) {
