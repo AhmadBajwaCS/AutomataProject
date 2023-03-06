@@ -205,12 +205,31 @@ public class DFA {
         return false;
     }*/
 
-    public boolean isUniversalLanguage () {
+    /*public boolean isUniversalLanguage () {
         if (this.finalStates.length == this.transitionTable.length) {
             return true;
         }
 
         return false;
+    }*/
+
+    /*public boolean isInfinite () {
+        //int size = this.transitionTable.length;
+        int doubleSize = this.transitionTable.length * 2;
+
+        
+    }*/
+
+    @Override
+    public boolean equals (Object o) {
+        if (o  == this)
+            return true;
+
+        if (!(o instanceof DFA))
+            return false;
+
+        DFA d = (DFA) o;
+        return this.transitionTable == d.transitionTable;
     }
 
 
