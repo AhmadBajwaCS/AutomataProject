@@ -145,7 +145,6 @@ public class DFA {
         return false;
     }
 
-
     public static DFA union(DFA m1, DFA m2) {
 
         // Create the new DFA and return it
@@ -196,7 +195,6 @@ public class DFA {
     private int[][] getTransitionTable() {
         return this.transitionTable;
     }
-
 
     public void printDFA() {
         System.out.println("Transition Table:");
@@ -271,4 +269,28 @@ public class DFA {
         // L(M) is finite, so return false.
         return false;
     }
+
+    public boolean equals (DFA m2) {
+
+        DFA m3 = DFA.difference(this, m2);
+
+        if(m3.isEmptyLanguage()){
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean isSubsetOf(DFA m2){
+
+        m2 = DFA.complement(m2);
+        DFA m3 = DFA.intersection(this, m2);
+
+        if(m3.isEmptyLanguage()){
+            return true;
+        }
+
+        return false;
+    }
+
 }
