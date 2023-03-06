@@ -9,6 +9,7 @@ package com.company;/* Project #1 - Automata Theory
  */
 
 
+import java.lang.Character.Subset;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -230,6 +231,10 @@ public class DFA {
 
         DFA d = (DFA) o;
         return this.transitionTable == d.transitionTable;
+    }
+
+    public boolean isSubsetOf (DFA m) {
+        return this.equals(m);
     }
 
 
