@@ -257,7 +257,6 @@ public class DFA {
     }
 
     public static String credits() {
-        String names = "\n Keshav Raghavan \n Joseph Wright \n Akhil Kanagala \n Ahmad Bajwa";
-        return names;
+        return "Keshav Raghavan, Joseph Wright, Akhil Kanagala, Ahmad Bajwa";
     }
 }
