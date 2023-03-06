@@ -274,13 +274,13 @@ public class Tester {
 				new boolean[]{true, false, true, true, true, false});
         testsRan += testStrings.length;
         
-		/*testsPassed += emptyChecker(new DFA[]{one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve},
+		testsPassed += emptyChecker(new DFA[]{one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve},
 								new boolean[]{false, false, false, false, false, false, true, false, false, false, false, false});
 		testsRan += 12;
 
 		testsPassed += universalChecker(new DFA[]{one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve},
 									new boolean[]{false, false, false, false, false, false, false, false, false, false, false, true});
-		testsRan += 12;*/
+		testsRan += 12;
 
 		testsPassed += infiniteChecker(new DFA[]{one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve},
 									new boolean[]{true, true, true, true, false, true, false, false, true, false, false, true});
@@ -330,7 +330,7 @@ public class Tester {
         return testsPassed;
     }
 
-	/*public static int emptyChecker(DFA[] dfaList, boolean[] desiredTestResults) {
+	public static int emptyChecker(DFA[] dfaList, boolean[] desiredTestResults) {
 		int testsPassed = 0;
 
 		for(int i = 0; i < dfaList.length; i++) {
@@ -360,7 +360,7 @@ public class Tester {
 				testsPassed++;
 		}
 		return testsPassed;
-	}*/
+	}
 	
 	public static int infiniteChecker(DFA[] dfaList, boolean[] desiredTestResults) {
 		int testsPassed = 0;

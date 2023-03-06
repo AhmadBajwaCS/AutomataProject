@@ -218,6 +218,22 @@ public class DFA {
         return names;
     }
 
+    public boolean isEmptyLanguage () {
+        if (this.finalStates.length == 0) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean isUniversalLanguage () {
+        if (this.finalStates.length == this.transitionTable.length) {
+            return true;
+        }
+
+        return false;
+    }
+
     public boolean isInfinite() {
         Set<Integer> visitedStates = new HashSet<>();
         Stack<Integer> currentStateStack = new Stack<>();
