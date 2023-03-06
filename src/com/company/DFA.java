@@ -1,4 +1,5 @@
-package com.company;/* Project #1 - Automata Theory
+package com.company;
+/* Project #3 - Automata Theory
  *
  * Group: 
  * Keshav Raghavan (KAR190002)
@@ -9,7 +10,6 @@ package com.company;/* Project #1 - Automata Theory
  */
 
 
-import java.lang.Character.Subset;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -102,6 +102,7 @@ public class DFA {
 
                 /*if ( java.util.Arrays.asList(finalStatesM1).indexOf(i) != -1)
                     isFinal1 = true;
+
                 if ( java.util.Arrays.asList(finalStatesM2).indexOf(j) != -1)
                     isFinal2 = true; */
 
@@ -198,48 +199,6 @@ public class DFA {
         return this.transitionTable;
     }
 
-    /*public boolean isEmptyLanguage () {
-        if (this.finalStates.length == 0) {
-            return true;
-        }
-
-        return false;
-    }*/
-
-    /*public boolean isUniversalLanguage () {
-        if (this.finalStates.length == this.transitionTable.length) {
-            return true;
-        }
-
-        return false;
-    }*/
-
-    /*public boolean isInfinite () {
-        //int size = this.transitionTable.length;
-        int doubleSize = this.transitionTable.length * 2;
-
-        
-    }*/
-
-    @Override
-    public boolean equals (Object o) {
-        if (o  == this)
-            return true;
-
-        if (!(o instanceof DFA))
-            return false;
-
-        DFA d = (DFA) o;
-        return this.transitionTable == d.transitionTable;
-    }
-
-    public boolean isSubsetOf (DFA m) {
-        if (this.equals(m))
-            return true;
-
-        return true;
-    }
-
 
     public void printDFA() {
         System.out.println("Transition Table:");
@@ -257,7 +216,6 @@ public class DFA {
     }
 
     public static String credits() {
-        String names = "\n Keshav Raghavan \n Joseph Wright \n Akhil Kanagala \n Ahmad Bajwa";
-        return names;
+        return "Keshav Raghavan Joseph Wright Akhil Kanagala Ahmad Bajwa";
     }
 }
