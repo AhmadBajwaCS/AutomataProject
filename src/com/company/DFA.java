@@ -197,21 +197,21 @@ public class DFA {
         return this.transitionTable;
     }
 
-    public boolean isEmptyLanguage () {
+    /*public boolean isEmptyLanguage () {
         if (this.finalStates.length == 0) {
             return true;
         }
 
         return false;
-    }
+    }*/
 
-    /*public boolean isUniversalLanguage () {
+    public boolean isUniversalLanguage () {
         if (this.finalStates.length == this.transitionTable.length) {
             return true;
         }
 
         return false;
-    }*/
+    }
 
 
     public void printDFA() {
