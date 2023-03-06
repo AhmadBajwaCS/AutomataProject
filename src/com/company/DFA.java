@@ -9,7 +9,6 @@ package com.company;/* Project #1 - Automata Theory
  */
 
 
-import java.lang.Character.Subset;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -204,22 +203,15 @@ public class DFA {
         }
 
         return false;
-    }*/
+    }
 
-    /*public boolean isUniversalLanguage () {
+    public boolean isUniversalLanguage () {
         if (this.finalStates.length == this.transitionTable.length) {
             return true;
         }
 
         return false;
-    }*/
-
-    /*public boolean isInfinite () {
-        //int size = this.transitionTable.length;
-        int doubleSize = this.transitionTable.length * 2;
-
-        
-    }*/
+    }
 
     @Override
     public boolean equals (Object o) {
@@ -231,7 +223,7 @@ public class DFA {
 
         DFA d = (DFA) o;
         return this.transitionTable == d.transitionTable;
-    }
+    }*/
 
     public boolean isSubsetOf (DFA m) {
         if (this.equals(m))
