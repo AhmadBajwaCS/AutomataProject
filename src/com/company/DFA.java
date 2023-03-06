@@ -9,8 +9,7 @@ package com.company;/* Project #1 - Automata Theory
  */
 
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 
 public class DFA {
 
@@ -217,5 +216,59 @@ public class DFA {
     public static String credits() {
         String names = "\n Keshav Raghavan \n Joseph Wright \n Akhil Kanagala \n Ahmad Bajwa";
         return names;
+    }
+
+    public boolean isEmptyLanguage () {
+        if (this.finalStates.length == 0) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean isUniversalLanguage () {
+        if (this.finalStates.length == this.transitionTable.length) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean isInfinite() {
+        Set<Integer> visitedStates = new HashSet<>();
+        Stack<Integer> currentStateStack = new Stack<>();
+
+        // Push the current state onto the currentStateStack.
+        currentStateStack.push(state);
+
+        // Loop through the DFA.
+        while (!currentStateStack.isEmpty()) {
+
+            int currentState = currentStateStack.pop();
+
+            // If the current state is a final state, it is infinite.
+            for (int finalState : finalStates) {
+                if (finalState == currentState) {
+                    return true;
+                }
+            }
+
+            // Add the current state to the set of visitedStates.
+            visitedStates.add(currentState);
+
+            // Loop through the transition table for the current state.
+            for (int i = 0; i < transitionTable[currentState].length; i++) {
+                int nextState = transitionTable[currentState][i];
+
+                // Check if the next state has already been visited.
+                if (!visitedStates.contains(nextState)) {
+                    // Add the next state to the currentStateStack.
+                    currentStateStack.push(nextState);
+                }
+            }
+        }
+
+        // L(M) is finite, so return false.
+        return false;
     }
 }
