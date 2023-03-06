@@ -273,8 +273,11 @@ public class DFA {
     public boolean equals (DFA m2) {
 
         DFA m3 = DFA.difference(this, m2);
+        DFA m4 = DFA.difference(m2, this);
+        m3.printDFA();
 
-        if(m3.isEmptyLanguage()){
+        if(m3.isEmptyLanguage() && m4.isEmptyLanguage()){
+            System.out.println("m3 is empty");
             return true;
         }
 

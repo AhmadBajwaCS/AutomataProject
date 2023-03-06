@@ -385,7 +385,9 @@ public class Tester {
 		System.out.println("Equals Checker");
 
 		for(int i = 0; i < dfaList.length; i++) {
+			System.out.println("\n EQUALS DFA" + i + " ----- ");
 			if(dfaList[i][0].equals(dfaList[i][1]) != desiredTestResults[i]) {
+				System.out.println("-- FAILED -- ");
 				if(desiredTestResults[i])
 					failed.add("The DFAs in pair [" + i + "] incorrectly stated they were NOT equal\n");
 				else
