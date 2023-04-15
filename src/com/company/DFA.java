@@ -287,13 +287,26 @@ public class DFA {
     public boolean isSubsetOf(DFA m2){
 
         m2 = DFA.complement(m2);
-        DFA m3 = DFA.intersection(this, m2);
+        DFA m3 = DFA.union(this, m2);
 
         if(m3.isEmptyLanguage()){
             return true;
         }
 
         return false;
+    }
+
+    public static String compress (DFA m) {
+
+        return "";
+    }
+
+    public static DFA decompress (String str) {
+        return null;
+    }
+
+    public boolean identical (DFA d) {
+        return true;
     }
 
 }
