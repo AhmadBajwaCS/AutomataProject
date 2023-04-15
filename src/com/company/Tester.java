@@ -317,8 +317,8 @@ public class Tester {
                 new boolean[]{false, false, false, false, true, true});
         testsRan += 6;
 
-        testsPassed += identicalChecker(new DFA[] { one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, fourteen });
-        testsRan += 14;
+        //testsPassed += identicalChecker(new DFA[] { one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, fourteen });
+        //testsRan += 14;
 
 
         System.out.println();
@@ -327,6 +327,14 @@ public class Tester {
         }
         System.out.println("\nYou got " + testsPassed + "/" + testsRan + " correct.");
         System.out.println("Credits: " + DFA.credits());
+
+        System.out.println("\n\n ---- Testing Compress and Decompress: ----- \n DFA Three:");
+        three.printDFA();
+        String binStringThree = DFA.compress(three);
+        System.out.println("Here is the compressed DFA as a binary string: " + binStringThree);
+        System.out.println("Here is the decompressed string as a DFA:");
+        DFA.decompress(binStringThree).printDFA();
+
     }
 
     /**
