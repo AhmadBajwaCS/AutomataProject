@@ -226,10 +226,7 @@ public class DFA {
     }*/
 
     public boolean isSubsetOf (DFA m) {
-        if (this.equals(m))
-            return true;
-
-        return true;
+        
     }
 
 
