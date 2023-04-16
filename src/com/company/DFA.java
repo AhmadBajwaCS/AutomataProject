@@ -361,8 +361,44 @@ import java.util.*;
     }
 
     public boolean identical (DFA d) {
-        return true;
+
+            String compressedDFAOne = compress(this);
+            String compressedDFATwo = compress(d);
+
+            DFA decompDFAOne = decompress(compressedDFAOne);
+            DFA decompDFATwo = decompress(compressedDFATwo);
+
+            int[][] transTableOne = decompDFAOne.transitionTable;
+            int[][] transTableTwo = decompDFATwo.transitionTable;
+
+            int[] finalStatesOne = decompDFAOne.finalStates;
+            int[] finalStatesTwo = decompDFATwo.finalStates;
+
+            // Check the lengths of the tables
+            if(transTableOne.length != transTableTwo.length ||
+                    transTableOne[0].length != transTableTwo[0].length ||
+                    finalStatesOne.length != finalStatesTwo.length){
+                return false;
+            }
+
+            // see if the transition tables are the same
+            for(int i = 0; i < transTableOne.length; i++){
+                for(int j = 0; j < transTableOne[0].length; j++){
+                    if (transTableOne[i][j] != transTableTwo[i][j]){
+                        return false;
+                    }
+                }
+            }
+
+            // check if final states arrays are the same
+            for(int i = 0; i < finalStatesOne.length; i++){
+                if(finalStatesOne[i] != finalStatesTwo[i])
+                    return false;
+            }
+
+            return true;
     }
+
 
 
 }
